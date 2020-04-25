@@ -13,12 +13,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule }    from '@angular/common/http';
 import { LoginServiceService} from './services/login-service.service';
 import { OptionsComponent } from './components/options/options.component';
+import { StudentInfoComponent } from './components/student-info/student-info.component';
+import { MatTableModule } from '@angular/material/table'
+import { CdkTableModule} from '@angular/cdk/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     OptionsComponent,
+    StudentInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { OptionsComponent } from './components/options/options.component';
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    CdkTableModule,
   ],
   providers: [LoginServiceService],
   bootstrap: [AppComponent]

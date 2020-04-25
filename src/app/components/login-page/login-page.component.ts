@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { LoginServiceService} from '../../services/login-service.service';
 import { Router } from '@angular/router';
+import { GlobalConstants } from 'src/app/common/globalConstants'
 
 @Component({
   selector: 'app-login-page',
@@ -24,11 +25,15 @@ export class LoginPageComponent implements OnInit {
 
   login: LoginCrd = {} as any;
 
-  private jwt: Object;
+  public jwt: Object;
 
   submitUser(): void{
     this.router.navigateByUrl('/options')
-    this.loginService.postLogin(this.login).subscribe((jwt) => {this.jwt = jwt, console.log(this.jwt)})
+    this.loginService.postLogin(this.login).subscribe((jwt) => {
+      this.jwt = jwt,
+      localStorage.setItem('localJWT', JSON.stringify(this.jwt))
+      })
+    
   }
 
 }
