@@ -3,6 +3,6 @@ import {Major} from 'src/app/models/major'
 export interface Grupa {
     id:number,
     seria: Seria,
-    number: number
+    number: number,
     major: Major
   }

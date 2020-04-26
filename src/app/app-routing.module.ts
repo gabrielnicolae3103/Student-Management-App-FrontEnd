@@ -3,11 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { OptionsComponent } from './components/options/options.component';
 import { StudentInfoComponent } from './components/student-info/student-info.component';
+import {InfoContainerComponent} from './components/info-container/info-container.component';
+import {AddFacultyComponent} from './components/add-faculty/add-faculty.component'
+import {AddSeriesComponent} from './components/add-series/add-series.component'
+import {AddGroupComponent} from './components/add-group/add-group.component'
 
 
 const routes: Routes = [{path: 'login', component: LoginPageComponent},
                          {path: 'options', component: OptionsComponent},
-                         {path: 'student', component: StudentInfoComponent}];
+                         {path: 'student', component: StudentInfoComponent},
+                         {path: 'addInfo', component: InfoContainerComponent},
+
+                         {path: 'addFaculty', component: AddFacultyComponent},
+                         {path: 'addGroup', component: AddGroupComponent},
+                         {path: 'addSeries', component: AddSeriesComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
