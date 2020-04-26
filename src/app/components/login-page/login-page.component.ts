@@ -31,9 +31,8 @@ export class LoginPageComponent implements OnInit {
     this.router.navigateByUrl('/options')
     this.loginService.postLogin(this.login).subscribe((jwt) => {
       this.jwt = jwt,
-      localStorage.setItem('localJWT', JSON.stringify(this.jwt))
-      })
-    
+      localStorage.setItem('localJWT', JSON.stringify(this.jwt)),
+      console.log(JSON.parse(localStorage.getItem('localJWT')));
+      });
   }
-
 }
