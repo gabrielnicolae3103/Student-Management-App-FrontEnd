@@ -1,0 +1,10 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label *ngIf='facultyToAdd' >Adauga facultate</mat-label>
+      <input matInput [(ngModel)] = "facultyToAdd.name" [ngModelOptions]="{standalone: true}" placeholder="Adauga Facultate">
+    </mat-form-field>
+  
+
+  </form>
+  <button mat-button color="primary" class = "example-button-row" (click) = "submitNewFaculty()">Adauga</button>
+

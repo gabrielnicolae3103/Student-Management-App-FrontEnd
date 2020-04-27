@@ -16,6 +16,12 @@ import { OptionsComponent } from './components/options/options.component';
 import { StudentInfoComponent } from './components/student-info/student-info.component';
 import { MatTableModule } from '@angular/material/table'
 import { CdkTableModule} from '@angular/cdk/table';
+import { InfoContainerComponent } from './components/info-container/info-container.component';
+import { AddFacultyComponent } from './components/add-faculty/add-faculty.component';
+import { AddGroupComponent } from './components/add-group/add-group.component';
+import { AddSeriesComponent } from './components/add-series/add-series.component';
+import {AddNewFacultyService} from './services/add-new-faculty.service'
+import {MatSelectModule} from '@angular/material/select'
 
 @NgModule({
   declarations: [
@@ -23,6 +29,10 @@ import { CdkTableModule} from '@angular/cdk/table';
     LoginPageComponent,
     OptionsComponent,
     StudentInfoComponent,
+    InfoContainerComponent,
+    AddFacultyComponent,
+    AddGroupComponent,
+    AddSeriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +46,9 @@ import { CdkTableModule} from '@angular/cdk/table';
     HttpClientModule,
     MatTableModule,
     CdkTableModule,
+    MatSelectModule,
   ],
-  providers: [LoginServiceService],
+  providers: [LoginServiceService, AddNewFacultyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

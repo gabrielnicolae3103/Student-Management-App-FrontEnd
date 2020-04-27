@@ -1,0 +1,28 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label *ngIf='groupToAdd'>Adauga grupa</mat-label>
+        <input matInput [(ngModel)]="groupToAdd.number" [ngModel]="{standalone: true}" placeholder="Adauga serie">
+    </mat-form-field>
+
+    <h4>Selectati seria</h4>
+    <mat-form-field>
+        <mat-label>Selectati seria</mat-label>
+        <mat-select (click) = "getSeriesFromServer()" [(ngModel)]="groupToAdd.seria" name="seria">
+            <mat-option *ngFor="let seria of seriesToGet" [value] = "seria">
+                {{seria.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h4>Selectati majorul</h4>
+    <mat-form-field>
+        <mat-label>Selectati majorul</mat-label>
+        <mat-select (click) = "getMajorsFromServer()">
+            <mat-option *ngFor="let major of majorToGet" [value]="groupToAdd.major">
+                {{major.name}}
+                {{major.faculty.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-button color="primary" class = "example-button-row" (click) = "methodToCall()">Adauga</button>

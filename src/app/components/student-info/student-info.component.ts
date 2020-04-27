@@ -19,7 +19,13 @@ export class StudentInfoComponent implements OnInit {
 
   }
 
-  displayedColumns: string[] = ['cnp'];
+  displayedColumns: string[] = ['SIN',
+                                'Nume',
+                                'F.I.',
+                                'Prenume',
+                                'CNP',
+                                'Nr. Telefon',
+                                'email'];
   
 
   dataSource: StudentForm[];
