@@ -7,8 +7,8 @@
     <h4>Selectati seria</h4>
     <mat-form-field>
         <mat-label>Selectati seria</mat-label>
-        <mat-select (click) = "getSeriesFromServer()">
-            <mat-option *ngFor="let seria of seriesToGet" [value]="groupToAdd.seria">
+        <mat-select (click) = "getSeriesFromServer()" [(ngModel)]="groupToAdd.seria" name="seria">
+            <mat-option *ngFor="let seria of seriesToGet" [value] = "seria">
                 {{seria.name}}
             </mat-option>
         </mat-select>

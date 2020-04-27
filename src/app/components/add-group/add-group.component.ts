@@ -12,26 +12,25 @@ import { Seria } from 'src/app/models/seria';
 })
 export class AddGroupComponent implements OnInit {
 
+  groupToAdd: Grupa = new Grupa();
+
+  majorToGet: Major[];
+  seriesToGet: Seria[];
+
   constructor(
     private addGroupService: AddGroupsService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.groupToAdd.number = 0;
   }
-
-  groupToAdd: Grupa = {} as any;
-
-  majorToGet: Major[] = {} as any;
-  seriesToGet: Seria[] = {} as any;
 
   getMajorsFromServer(): void {
     this.addGroupService.getMajors()
       .subscribe(response => {
         this.majorToGet = response;
-        console.log('majors', this.majorToGet)
-      })
+        console.log('majors', this.majorToGet);
+      });
   }
 
 
@@ -39,18 +38,11 @@ export class AddGroupComponent implements OnInit {
     this.addGroupService.getSeries()
       .subscribe(response => {
         this.seriesToGet = response;
-        console.log('series', this.seriesToGet)
-      })
+        console.log('series', this.seriesToGet);
+      });
     }
 
   methodToCall(): void{
-    
-    console.log(this.groupToAdd.number)
-    
-
+    console.log(this.groupToAdd);
   }
-
-
-
-  
 }

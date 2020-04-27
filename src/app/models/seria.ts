@@ -1,4 +1,4 @@
-export interface Seria {
-    id:number,
-    name: string
+export class Seria {
+    id: number;
+    name: string;
   }
