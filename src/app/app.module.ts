@@ -1,3 +1,4 @@
+import { StudentFormComponent } from './components/studentForm/studentForm.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -33,6 +34,7 @@ import {MatSelectModule} from '@angular/material/select'
     AddFacultyComponent,
     AddGroupComponent,
     AddSeriesComponent,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,

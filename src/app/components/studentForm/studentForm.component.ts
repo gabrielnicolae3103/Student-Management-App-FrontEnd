@@ -1,5 +1,4 @@
 import { StudentService } from './../../services/student.service';
-import { UserForm } from 'src/app/models/userForm';
 import { Component, OnInit } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import { StudentForm } from 'src/app/models/studentForm';
@@ -11,15 +10,15 @@ import { StudentForm } from 'src/app/models/studentForm';
 })
 export class StudentFormComponent implements OnInit {
   username: string;
-  currentUser: StudentForm;
+  currentStudent: StudentForm;
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
     this.username = jwt_decode(JSON.parse(localStorage.getItem('localJWT')).jwt).sub;
     console.log(this.username);
     this.studentService.getStudentByUsername(this.username).subscribe((user: StudentForm) => {
-      this.currentUser = user;
-      console.log(this.currentUser);
+      this.currentStudent = user;
+      console.log(this.currentStudent);
     });
   }
 
