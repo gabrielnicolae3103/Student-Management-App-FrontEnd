@@ -1,3 +1,4 @@
+import { StudentFormComponent } from './components/studentForm/studentForm.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -13,7 +14,6 @@ const routes: Routes = [{path: 'login', component: LoginPageComponent},
                          {path: 'options', component: OptionsComponent},
                          {path: 'student', component: StudentInfoComponent},
                          {path: 'addInfo', component: InfoContainerComponent},
-
                          {path: 'addFaculty', component: AddFacultyComponent},
                          {path: 'addGroup', component: AddGroupComponent},
                          {path: 'addSeries', component: AddSeriesComponent}];
