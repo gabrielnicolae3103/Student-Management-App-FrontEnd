@@ -21,6 +21,7 @@ import { AddFacultyComponent } from './components/add-faculty/add-faculty.compon
 import { AddGroupComponent } from './components/add-group/add-group.component';
 import { AddSeriesComponent } from './components/add-series/add-series.component';
 import {AddNewFacultyService} from './services/add-new-faculty.service'
+import {MatSelectModule} from '@angular/material/select'
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {AddNewFacultyService} from './services/add-new-faculty.service'
     HttpClientModule,
     MatTableModule,
     CdkTableModule,
+    MatSelectModule,
   ],
   providers: [LoginServiceService, AddNewFacultyService],
   bootstrap: [AppComponent]
