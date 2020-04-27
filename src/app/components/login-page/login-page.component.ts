@@ -4,7 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { LoginServiceService} from '../../services/login-service.service';
 import { Router } from '@angular/router';
-import { GlobalConstants } from 'src/app/common/globalConstants'
+import { GlobalConstants } from 'src/app/common/globalConstants';
 
 @Component({
   selector: 'app-login-page',
