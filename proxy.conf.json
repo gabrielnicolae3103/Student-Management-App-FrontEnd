@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "http://aws-backend-ipapp.eba-g7bht3us.eu-central-1.elasticbeanstalk.com",
+      "secure": false
+    }
+}
