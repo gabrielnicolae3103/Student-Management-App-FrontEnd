@@ -38,12 +38,10 @@
     <mat-label>Phone Number</mat-label>
     <input matInput [(ngModel)]="currentStudent.user.phoneNumber" name="phoneNumber">
   </mat-form-field>
-  <p>{{currentStudent.father_initial}}</p>
-  <p>{{currentStudent.sin}}</p>
-  <p>{{currentStudent.cnp}}</p>
-  <p>{{currentStudent.user.firstName}}</p>
-  <p>{{currentStudent.user.lastName}}</p>
-  <p>{{currentStudent.user.password}}</p>
-  <p>{{currentStudent.user.email}}</p>
-  <p>{{currentStudent.user.phoneNumber}}</p>
+ <br>
+ <section>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="updateStudent()">Primary</button>
+  </div>
+</section>
 </div>

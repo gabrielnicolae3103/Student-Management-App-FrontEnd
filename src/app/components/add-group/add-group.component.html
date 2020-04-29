@@ -1,7 +1,7 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
         <mat-label *ngIf='groupToAdd'>Adauga grupa</mat-label>
-        <input matInput [(ngModel)]="groupToAdd.number" [ngModel]="{standalone: true}" placeholder="Adauga serie">
+        <input matInput [(ngModel)]="groupToAdd.number" name="grupa" placeholder="Grupa: ex 331">
     </mat-form-field>
 
     <h4>Selectati seria</h4>
@@ -17,8 +17,8 @@
     <h4>Selectati majorul</h4>
     <mat-form-field>
         <mat-label>Selectati majorul</mat-label>
-        <mat-select (click) = "getMajorsFromServer()">
-            <mat-option *ngFor="let major of majorToGet" [value]="groupToAdd.major">
+        <mat-select (click) = "getMajorsFromServer()" [(ngModel)]="groupToAdd.major" name="major">
+            <mat-option *ngFor="let major of majorToGet" [value]="major">
                 {{major.name}}
                 {{major.faculty.name}}
             </mat-option>

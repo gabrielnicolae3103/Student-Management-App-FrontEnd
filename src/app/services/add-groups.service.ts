@@ -23,7 +23,7 @@ export class AddGroupsService {
 
   private endpointMajors = '/majors';
   private endpointSeries = '/serii';
-  private endpointGroups = '/groups';
+  private endpointGroups = '/grupe';
   private hostname = 'http://aws-backend-ipapp.eba-g7bht3us.eu-central-1.elasticbeanstalk.com';
 
   getMajors() {
@@ -34,8 +34,8 @@ export class AddGroupsService {
     return this.http.get(this.hostname + this.endpointSeries, this.httpOptions) as Observable<Seria[]>
   }
 
-  postSeries(grupa: Grupa): Observable<Object>{
-    return this.http.post(this.hostname + this.endpointGroups, JSON.stringify(grupa), this.httpOptions);
+  postGrupa(grupa: Grupa): Observable<Grupa>{
+    return this.http.post(this.hostname + this.endpointGroups, JSON.stringify(grupa), this.httpOptions) as Observable<Grupa>;
   }
 
 

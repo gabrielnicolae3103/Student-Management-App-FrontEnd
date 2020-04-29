@@ -10,25 +10,22 @@ import { Seria } from 'src/app/models/seria';
 })
 export class AddSeriesComponent implements OnInit {
 
+  seriesToAdd: Seria;
+
   constructor(
     private router: Router,
     private addSeriesService: AddSeriesService
   ) { }
 
   ngOnInit(): void {
-    this.seriesToAdd.name = ''
+    this.seriesToAdd = new Seria();
   }
 
-  seriesToAdd: Seria = {} as any;
-
-  public seriesObj: Object;
-
   submitNewSeries(): void{
-    this.router.navigateByUrl('/addSeries');
-
     this.addSeriesService.postSeries(this.seriesToAdd).subscribe((seriesObj) =>  {
-      this.seriesObj = seriesObj
-      console.log('serie adaugata', this.seriesToAdd)});
+      console.log('serie adaugata', seriesObj);
+    });
+    this.router.navigateByUrl('/addSeries');
   }
 
 

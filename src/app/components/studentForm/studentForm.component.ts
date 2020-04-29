@@ -22,6 +22,12 @@ export class StudentFormComponent implements OnInit {
     });
   }
 
+  updateStudent(): void {
+    this.studentService.updateStudent(this.currentStudent).subscribe((user: StudentForm) => {
+      console.log(user);
+    });
+  }
+
 
 
 }

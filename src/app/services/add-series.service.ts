@@ -22,8 +22,9 @@ export class AddSeriesService {
   private endpoint = '/serii'
   private hostname = 'http://aws-backend-ipapp.eba-g7bht3us.eu-central-1.elasticbeanstalk.com';
 
-  postSeries(seria: Seria): Observable<Object>{
-    return this.http.post(this.hostname + this.endpoint, JSON.stringify(seria), this.httpOptions);
+  postSeries(seria: Seria): Observable<Seria>{
+    console.log(JSON.stringify(seria));
+    return this.http.post(this.hostname + this.endpoint, JSON.stringify(seria), this.httpOptions) as Observable<Seria>;
   }
 
 

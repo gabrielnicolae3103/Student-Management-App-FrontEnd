@@ -44,5 +44,9 @@ export class AddGroupComponent implements OnInit {
 
   methodToCall(): void{
     console.log(this.groupToAdd);
+    this.addGroupService.postGrupa(this.groupToAdd)
+    .subscribe((grupa: Grupa) => {
+      console.log(grupa);
+    });
   }
 }
