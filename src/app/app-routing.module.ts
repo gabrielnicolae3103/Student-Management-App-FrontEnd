@@ -1,3 +1,4 @@
+import { SecretaryComponent } from './components/secretary/secretary.component';
 import { StudentFormComponent } from './components/studentForm/studentForm.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,7 +18,8 @@ const routes: Routes = [{path: 'login', component: LoginPageComponent},
                          {path: 'addFaculty', component: AddFacultyComponent},
                          {path: 'addGroup', component: AddGroupComponent},
                          {path: 'addSeries', component: AddSeriesComponent},
-                        {path: 'student-info', component: StudentFormComponent}];
+                        {path: 'student-info', component: StudentFormComponent},
+                      { path: 'secretar', component: SecretaryComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
