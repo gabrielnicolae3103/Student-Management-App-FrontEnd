@@ -25,6 +25,9 @@ import { AddSeriesComponent } from './components/add-series/add-series.component
 import {AddNewFacultyService} from './services/add-new-faculty.service';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     CdkTableModule,
     MatSelectModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [LoginServiceService, AddNewFacultyService],
   bootstrap: [AppComponent]
