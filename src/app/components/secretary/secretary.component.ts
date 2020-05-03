@@ -111,6 +111,7 @@ export class SecretaryComponent implements OnInit {
 
   getStudents(): void {
     this.studentService.getStudents().subscribe((students: StudentForm[]) => {
+      this.students = students;
       this.dataSource = new MatTableDataSource<StudentForm>(students);
     });
   }
@@ -156,5 +157,20 @@ export class SecretaryComponent implements OnInit {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row some`;
+  }
+
+  onChange(): void {
+    this.grupeControl.value.forEach(element => {
+      console.log(element);
+    });
+    this.students.forEach(student => {
+      if (!this.selection.isSelected(student) && student.grupa !== undefined) {
+        if (this.grupeControl.value.some(group => {
+          return group.seria.name === student.grupa.seria.name;
+        })) {
+          this.selection.select(student);
+        }
+      }
+    });
   }
 }
