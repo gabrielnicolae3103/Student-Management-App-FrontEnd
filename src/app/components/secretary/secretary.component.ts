@@ -1,3 +1,5 @@
+import { Seria } from './../../models/seria';
+import { AddGroupsService } from 'src/app/services/add-groups.service';
 import { ClassService } from './../../services/class.service';
 import { Class } from './../../models/class';
 import { DataSource } from '@angular/cdk/table';
@@ -9,12 +11,20 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { startWith, map } from 'rxjs/operators';
+import { Grupa } from 'src/app/models/grupa';
 
 export class Course {
   constructor(public clasa: Class, public selected?: boolean) {
     if (selected === undefined) {
       selected = false;
     }
+  }
+}
+
+export class SelectGroup {
+  grupe: Grupa[];
+  constructor(public serie: Seria){
+    this.grupe = new Array<Grupa>();
   }
 }
 
@@ -35,13 +45,19 @@ export class SecretaryComponent implements OnInit {
   selectedCourses: Course[] = new Array<Course>();
   filteredCourses: Observable<Course[]>;
   lastFilter = '';
+  selectedGroups: Set<Grupa> = new Set<Grupa>();
+  grupe: Grupa[];
+  grupeControl = new FormControl();
+  selectGroups: SelectGroup[] = new Array<SelectGroup>();
 
   constructor(private studentService: StudentService,
-              private classService: ClassService) { }
+              private classService: ClassService,
+              private grupaService: AddGroupsService) { }
 
-  async ngOnInit() {
-    await this.getStudents();
-    await this.getCourses();
+  ngOnInit() {
+    this.getStudents();
+    this.getCourses();
+    this.getGroups();
     this.filteredCourses = this.courseControl.valueChanges.pipe(
       startWith<string | Course[]>(''),
       map(value => typeof value === 'string' ? value : this.lastFilter),
@@ -106,6 +122,18 @@ export class SecretaryComponent implements OnInit {
       });
       console.log(this.courses);
     });
+  }
+
+  getGroups(): void {
+    this.grupaService.getGroups().subscribe((grupe: Grupa[]) => {
+      grupe.forEach(grupa => {
+        if (!this.selectGroups.some(group => group.serie.name === grupa.seria.name)) {
+          this.selectGroups.push(new SelectGroup(grupa.seria));
+        }
+        this.selectGroups.find(group => group.serie.name === grupa.seria.name).grupe.push(grupa);
+      });
+    });
+    console.log(this.selectGroups);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
