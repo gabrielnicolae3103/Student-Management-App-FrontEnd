@@ -2,7 +2,6 @@ import { Seria } from './../../models/seria';
 import { AddGroupsService } from 'src/app/services/add-groups.service';
 import { ClassService } from './../../services/class.service';
 import { Class } from './../../models/class';
-import { DataSource } from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { StudentService } from './../../services/student.service';
 import { StudentForm } from './../../models/studentForm';
@@ -49,6 +48,7 @@ export class SecretaryComponent implements OnInit {
   grupe: Grupa[];
   grupeControl = new FormControl();
   selectGroups: SelectGroup[] = new Array<SelectGroup>();
+  lastSelectedGroupe: Grupa[];
 
   constructor(private studentService: StudentService,
               private classService: ClassService,
@@ -160,17 +160,36 @@ export class SecretaryComponent implements OnInit {
   }
 
   onChange(): void {
-    this.grupeControl.value.forEach(element => {
-      console.log(element);
+    var uncheckedGrupe: Grupa[] = new Array<Grupa>();
+    if (this.lastSelectedGroupe !== undefined) {
+      this.lastSelectedGroupe.forEach(grupa => {
+        if (!this.grupeControl.value.some(elem => {
+          return elem.seria.name === grupa.seria.name && elem.number === grupa.number;
+        })) {
+          uncheckedGrupe.push(grupa);
+        }
+      });
+    }
+
+    this.students.forEach(student => {
+      if (this.selection.isSelected(student) && student.grupa !== undefined) {
+        if (uncheckedGrupe.some(group => {
+          return group.seria.name === student.grupa.seria.name && group.number === student.grupa.number;
+        })) {
+          this.selection.deselect(student);
+        }
+      }
     });
+
     this.students.forEach(student => {
       if (!this.selection.isSelected(student) && student.grupa !== undefined) {
         if (this.grupeControl.value.some(group => {
-          return group.seria.name === student.grupa.seria.name;
+          return group.seria.name === student.grupa.seria.name && group.number === student.grupa.number;
         })) {
           this.selection.select(student);
         }
       }
     });
+    this.lastSelectedGroupe = this.grupeControl.value;
   }
 }
