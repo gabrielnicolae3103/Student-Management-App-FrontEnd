@@ -12,14 +12,6 @@ import { Observable } from 'rxjs/internal/Observable';
 import { startWith, map } from 'rxjs/operators';
 import { Grupa } from 'src/app/models/grupa';
 
-export class Course {
-  constructor(public clasa: Class, public selected?: boolean) {
-    if (selected === undefined) {
-      selected = false;
-    }
-  }
-}
-
 export class SelectGroup {
   grupe: Grupa[];
   constructor(public serie: Seria){
@@ -40,15 +32,14 @@ export class SecretaryComponent implements OnInit {
   displayedColumns: string[] = ['select', 'position', 'firstName', 'lastName', 'group'];
   selection = new SelectionModel<StudentForm>(true, []);
   courseControl = new FormControl();
-  courses: Course[] = new Array<Course>();
-  selectedCourses: Course[] = new Array<Course>();
-  filteredCourses: Observable<Course[]>;
   lastFilter = '';
   selectedGroups: Set<Grupa> = new Set<Grupa>();
   grupe: Grupa[];
   grupeControl = new FormControl();
   selectGroups: SelectGroup[] = new Array<SelectGroup>();
   lastSelectedGroupe: Grupa[];
+  classes: Class[];
+  selectedCourse: Class;
 
   constructor(private studentService: StudentService,
               private classService: ClassService,
@@ -58,55 +49,6 @@ export class SecretaryComponent implements OnInit {
     this.getStudents();
     this.getCourses();
     this.getGroups();
-    this.filteredCourses = this.courseControl.valueChanges.pipe(
-      startWith<string | Course[]>(''),
-      map(value => typeof value === 'string' ? value : this.lastFilter),
-      map(filter => this.filter(filter))
-    );
-  }
-
-  filter(filter: string): Course[] {
-    this.lastFilter = filter;
-    if (filter) {
-      return this.courses.filter(option => {
-        return option.clasa.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
-      });
-    } else {
-      return this.courses.slice();
-    }
-  }
-
-  displayFn(value: Course[] | string): string | undefined {
-    let displayValue: string;
-    if (Array.isArray(value)) {
-      value.forEach((course, index) => {
-        if (index === 0) {
-          displayValue = course.clasa.name;
-        } else {
-          displayValue += ', ' + course.clasa.name;
-        }
-      });
-    } else {
-      displayValue = value;
-    }
-    return displayValue;
-  }
-
-  optionClicked(event: Event, course: Course) {
-    event.stopPropagation();
-    this.toggleSelection(course);
-  }
-
-  toggleSelection(course: Course) {
-    course.selected = !course.selected;
-    if (course.selected) {
-      this.selectedCourses.push(course);
-    } else {
-      const i = this.selectedCourses.findIndex(value => value.clasa.name === course.clasa.name);
-      this.selectedCourses.splice(i, 1);
-    }
-
-    this.courseControl.setValue(this.selectedCourses);
   }
 
   getStudents(): void {
@@ -118,10 +60,7 @@ export class SecretaryComponent implements OnInit {
 
   getCourses(): void {
     this.classService.getClasses().subscribe((classes: Class[]) => {
-      classes.forEach((clasa: Class) => {
-        this.courses.push(new Course(clasa));
-      });
-      console.log(this.courses);
+      this.classes = classes;
     });
   }
 
