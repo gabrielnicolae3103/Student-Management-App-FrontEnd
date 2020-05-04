@@ -1,3 +1,4 @@
+import { EditGradesComponent } from './components/edit-grades/edit-grades.component';
 import { SecretaryComponent } from './components/secretary/secretary.component';
 import { StudentFormComponent } from './components/studentForm/studentForm.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddGroupComponent,
     AddSeriesComponent,
     StudentFormComponent,
-    SecretaryComponent
+    SecretaryComponent,
+    EditGradesComponent
   ],
   imports: [
     BrowserModule,

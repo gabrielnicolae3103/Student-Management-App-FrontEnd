@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Seria } from './../../models/seria';
 import { AddGroupsService } from 'src/app/services/add-groups.service';
 import { ClassService } from './../../services/class.service';
@@ -43,7 +44,8 @@ export class SecretaryComponent implements OnInit {
 
   constructor(private studentService: StudentService,
               private classService: ClassService,
-              private grupaService: AddGroupsService) { }
+              private grupaService: AddGroupsService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getStudents();
@@ -130,5 +132,12 @@ export class SecretaryComponent implements OnInit {
       }
     });
     this.lastSelectedGroupe = this.grupeControl.value;
+  }
+
+  goToEditGrades(): void {
+    this.router.navigate(['/edit-grades'], {state: { data: {
+      course : this.selectedCourse,
+      students: this.selection.selected
+    }}});
   }
 }
