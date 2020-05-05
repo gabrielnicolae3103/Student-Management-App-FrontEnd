@@ -33,6 +33,10 @@ getStudentByUsername(username: string): Observable<StudentForm> {
   return this.http.get(this.hostname + this.endpoint + '/username/' + username, this.httpOptions) as Observable<StudentForm>;
 }
 
+getStudentById(id: number): Observable<StudentForm> {
+  return this.http.get(this.hostname + this.endpoint + '/' + id, this.httpOptions) as Observable<StudentForm>;
+}
+
 updateStudent(student: StudentForm): Observable<StudentForm> {
   return this.http.put(this.hostname + this.endpoint + '/' + student.user.id,
                         JSON.stringify(student),
