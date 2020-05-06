@@ -1,7 +1,7 @@
 import { StudentForm } from './studentForm';
 import { Class } from './class';
 export class Grade {
-    class: Class;
+    clasa: Class;
     student: StudentForm;
     grade: number;
 }

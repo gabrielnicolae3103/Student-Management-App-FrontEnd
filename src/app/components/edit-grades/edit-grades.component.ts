@@ -51,4 +51,12 @@ export class EditGradesComponent implements OnInit {
     return true;
   }
 
+  updateGrades() {
+    this.gradeService.updateGrades(this.dataSource).subscribe(response => {
+      response.forEach((grade: Grade) => {
+        console.log(grade);
+      });
+    });
+  }
+
 }

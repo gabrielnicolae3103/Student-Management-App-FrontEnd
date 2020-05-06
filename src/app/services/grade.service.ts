@@ -1,10 +1,10 @@
-import { catchError } from 'rxjs/operators';
+import { Grade } from './../models/grade';
+import { catchError, map } from 'rxjs/operators';
 import { StudentForm } from './../models/studentForm';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, forkJoin } from 'rxjs';
 import { Class } from '../models/class';
-import { Grade } from '../models/grade';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,19 @@ export class GradeService {
     .pipe(catchError(this.handleError('getGrade', clasa, student)));
   }
 
-  private handleError(operation = 'operation', clasa: Class, student: StudentForm) {
+  updateGrade(grade: Grade): Observable<Grade> {
+    return this.http.put<Grade>(this.hostname + this.endpoint + '/student/' + grade.student.sin
+                        + '/class/' + grade.clasa.id, grade, this.httpOptions);
+  }
+
+  updateGrades(grades: Grade[]): Observable<Grade[]> {
+    let responses = grades.map((grade: Grade) => {
+      return this.updateGrade(grade);
+    });
+    return forkJoin(responses);
+  }
+
+  private handleError(operation = 'operation', clasa2: Class, student: StudentForm) {
     return (error: any): Observable<Grade> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -45,7 +57,7 @@ export class GradeService {
 
       // Let the app keep running by returning an empty result.
       let grade: Grade = new Grade();
-      grade.class = clasa;
+      grade.clasa = clasa2;
       grade.student = student;
       grade.grade = 0;
       return of(grade as Grade);
