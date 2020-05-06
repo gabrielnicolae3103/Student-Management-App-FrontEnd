@@ -16,6 +16,7 @@ export class EditGradesComponent implements OnInit {
   dataSource: Grade[] = new Array<Grade>();
   course: Class;
   displayedColumns: string[] = ['index', 'name', 'grupa', 'nota', 'notaNoua'];
+  userGradeMap = new Map();
   constructor(private studentService: StudentService,
               private gradeService: GradeService) {
     this.course = history.state.data.course;
@@ -30,6 +31,7 @@ export class EditGradesComponent implements OnInit {
     forkJoin(responses).subscribe(grades => {
       for (let i = 0; i < this.students.length; i++) {
         this.dataSource.push(grades[i]);
+        this.userGradeMap.set(grades[i].student.user.id, grades[i].grade);
       }
     });
   }
