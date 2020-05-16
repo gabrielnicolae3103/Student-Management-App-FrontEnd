@@ -29,6 +29,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudentCoursesComponent } from './components/student-courses/student-courses.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddSeriesComponent,
     StudentFormComponent,
     SecretaryComponent,
-    EditGradesComponent
+    EditGradesComponent,
+    StudentCoursesComponent
   ],
   imports: [
     BrowserModule,

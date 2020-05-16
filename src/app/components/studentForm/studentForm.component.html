@@ -41,7 +41,15 @@
  <br>
  <section>
   <div class="example-button-row">
-    <button mat-raised-button color="primary" (click)="updateStudent()">Primary</button>
+    <button mat-raised-button color="primary" (click)="updateStudent()">Edit</button>
   </div>
 </section>
+
 </div>
+
+<div>
+  <nav>
+    <li><a routerLink="/view-student-courses" routerLinkActive="active"> Vezi situatie scolara </a></li>
+  </nav>
+</div>
+<router-outlet></router-outlet>

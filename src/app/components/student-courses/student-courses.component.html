@@ -1,0 +1,31 @@
+<p>student-courses works!</p>
+
+<button mat-button color="primary" class = "example-button-row" (click) = "getGrades()">Arata note</button>
+<div>
+    <ul>
+        <li *ngFor="let recipient of classesMap | keyvalue">
+           Anul {{recipient.key}}
+           Materii
+           <div *ngFor = "let materie of recipient.value">
+                {{materie.name}} --> {{materie.creditPoints}} --> {{materie.type}} --> {{materie.semester}}
+                <div *ngIf = "showGrades" >
+                <div *ngFor = "let numeMaterie of grades | keyvalue">
+
+                    <div *ngIf = "materie.name == numeMaterie.key">
+                      
+
+                            Nota este: {{numeMaterie.value}}
+
+
+                        </div>
+                    </div>
+                </div>
+           </div>
+
+    
+
+
+        </li>
+    </ul>
+</div>
+

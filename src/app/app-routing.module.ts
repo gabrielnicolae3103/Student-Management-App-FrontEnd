@@ -10,6 +10,7 @@ import {InfoContainerComponent} from './components/info-container/info-container
 import {AddFacultyComponent} from './components/add-faculty/add-faculty.component'
 import {AddSeriesComponent} from './components/add-series/add-series.component'
 import {AddGroupComponent} from './components/add-group/add-group.component'
+import { StudentCoursesComponent } from './components/student-courses/student-courses.component';
 
 
 const routes: Routes = [  {path: 'login', component: LoginPageComponent},
@@ -21,7 +22,9 @@ const routes: Routes = [  {path: 'login', component: LoginPageComponent},
                           {path: 'addSeries', component: AddSeriesComponent},
                           {path: 'student-info', component: StudentFormComponent},
                           {path: 'secretar', component: SecretaryComponent},
-                          {path: 'edit-grades', component: EditGradesComponent}];
+                          {path: 'edit-grades', component: EditGradesComponent},
+                          {path: 'view-student-courses', component: StudentCoursesComponent}];
+                          
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
