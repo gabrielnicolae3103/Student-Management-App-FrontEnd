@@ -1,6 +1,24 @@
-<div>
-  <nav>
-    <li><a routerLink="/login" routerLinkActive="active"> Login Page </a></li>
-  </nav>
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link " (click)="logout()">Logout</a>
+  </div>
+</nav>
+<mat-toolbar color="primary">
+  <span class="home-button"></span>
+  <button (click)="goHome()" mat-icon-button color="white" aria-label="some">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="logout-button"></span>
+  <button (click)="logout()" mat-icon-button color="white" aria-label="some">
+    <mat-icon>person</mat-icon>
+    Logout
+  </button>
+</mat-toolbar>
+<!-- main app container -->
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

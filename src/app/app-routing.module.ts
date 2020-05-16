@@ -1,3 +1,5 @@
+import { AuthGuard } from './_helpers/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 import { EditGradesComponent } from './components/edit-grades/edit-grades.component';
 import { SecretaryComponent } from './components/secretary/secretary.component';
 import { StudentFormComponent } from './components/studentForm/studentForm.component';
@@ -13,15 +15,17 @@ import {AddGroupComponent} from './components/add-group/add-group.component'
 
 
 const routes: Routes = [  {path: 'login', component: LoginPageComponent},
-                          {path: 'options', component: OptionsComponent},
-                          {path: 'student', component: StudentInfoComponent},
-                          {path: 'addInfo', component: InfoContainerComponent},
-                          {path: 'addFaculty', component: AddFacultyComponent},
-                          {path: 'addGroup', component: AddGroupComponent},
-                          {path: 'addSeries', component: AddSeriesComponent},
-                          {path: 'student-info', component: StudentFormComponent},
-                          {path: 'secretar', component: SecretaryComponent},
-                          {path: 'edit-grades', component: EditGradesComponent}];
+                          {path: 'options', component: OptionsComponent, canActivate: [AuthGuard]},
+                          {path: 'student', component: StudentInfoComponent, canActivate: [AuthGuard]},
+                          {path: 'addInfo', component: InfoContainerComponent, canActivate: [AuthGuard]},
+                          {path: 'addFaculty', component: AddFacultyComponent, canActivate: [AuthGuard]},
+                          {path: 'addGroup', component: AddGroupComponent, canActivate: [AuthGuard]},
+                          {path: 'addSeries', component: AddSeriesComponent, canActivate: [AuthGuard]},
+                          {path: 'student-info', component: StudentFormComponent, canActivate: [AuthGuard]},
+                          {path: 'secretar', component: SecretaryComponent, canActivate: [AuthGuard]},
+                          {path: 'edit-grades', component: EditGradesComponent, canActivate: [AuthGuard]},
+                          {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+                          {path: '**', redirectTo: ''}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

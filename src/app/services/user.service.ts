@@ -11,13 +11,6 @@ export class UserService {
 
 constructor(private http: HttpClient) { }
 
-httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('localJWT')).jwt
-  })
-};
-
 
 
 private endpoint = '/users';
@@ -25,11 +18,23 @@ private hostname = 'http://aws-backend-ipapp.eba-g7bht3us.eu-central-1.elasticbe
 private hostname2 = 'http://localhost:8080';
 
 getUsers(): Observable<UserForm[]>{
-  return this.http.get(this.hostname + this.endpoint, this.httpOptions) as Observable<UserForm[]>;
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('localJWT')).jwt
+    })
+  };
+  return this.http.get(this.hostname + this.endpoint, httpOptions) as Observable<UserForm[]>;
 }
 
 getUserByUsername(username: string): Observable<UserForm> {
-  return this.http.get(this.hostname + this.endpoint + '/' + username, this.httpOptions) as Observable<UserForm>;
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('localJWT')).jwt
+    })
+  };
+  return this.http.get(this.hostname + this.endpoint + '/login/' + username, httpOptions) as Observable<UserForm>;
 }
 
 }

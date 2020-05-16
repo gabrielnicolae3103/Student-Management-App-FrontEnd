@@ -18,21 +18,20 @@ export class LoginPageComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.login.username = '',
-    this.login.password = ''
-  }
-
   login: LoginCrd = {} as any;
 
-  public jwt: Object;
+  ngOnInit(): void {
+    this.login.username = '',
+    this.login.password = '';
+  }
 
   submitUser(): void{
-    this.router.navigateByUrl('/options')
     this.loginService.postLogin(this.login).subscribe((jwt) => {
-      this.jwt = jwt,
-      localStorage.setItem('localJWT', JSON.stringify(this.jwt)),
+      console.log('login');
+      localStorage.setItem('localJWT', JSON.stringify(jwt)),
+      this.loginService.jwt = JSON.stringify(jwt);
       console.log(JSON.parse(localStorage.getItem('localJWT')));
+      this.router.navigateByUrl('/');
       });
   }
 }
