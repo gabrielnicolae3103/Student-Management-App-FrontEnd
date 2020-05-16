@@ -47,16 +47,24 @@ export class SecretaryComponent implements OnInit {
               private grupaService: AddGroupsService,
               private router: Router) { }
 
-  ngOnInit() {
-    this.getStudents();
-    this.getCourses();
-    this.getGroups();
+  async ngOnInit() {
+    await this.getStudents();
+    await this.getCourses();
+    await this.getGroups();
+    
   }
 
   getStudents(): void {
     this.studentService.getStudents().subscribe((students: StudentForm[]) => {
       this.students = students;
       this.dataSource = new MatTableDataSource<StudentForm>(students);
+      this.dataSource.filterPredicate = (data: StudentForm, filter: string) => {
+        return data.user.firstName.toLowerCase().indexOf(filter) !== -1 ||
+                data.user.lastName.toLowerCase().indexOf(filter) !== -1 ||
+                data.grupa.number === Number(filter) ||
+                data.grupa.seria.name.toLowerCase().indexOf(filter) !== -1 ||
+                (data.grupa.number.toString() + data.grupa.seria.name.toLowerCase()).indexOf(filter) !== -1;
+      };
     });
   }
 
@@ -139,5 +147,10 @@ export class SecretaryComponent implements OnInit {
       course : this.selectedCourse,
       students: this.selection.selected
     }}});
+  }
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
