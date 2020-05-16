@@ -28,4 +28,8 @@ export class AppComponent implements OnInit {
   goHome() {
     this.router.navigate(['']);
   }
+
+  showNavBar() {
+    return this.authenticationService.jwt;
+  }
 }

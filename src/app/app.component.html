@@ -1,10 +1,5 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link " (click)="logout()">Logout</a>
-  </div>
-</nav>
+<div *ngIf="showNavBar()">
 <mat-toolbar color="primary">
   <span class="home-button"></span>
   <button (click)="goHome()" mat-icon-button color="white" aria-label="some">
@@ -18,6 +13,7 @@
     Logout
   </button>
 </mat-toolbar>
+</div>
 <!-- main app container -->
 <div class="container">
   <router-outlet></router-outlet>

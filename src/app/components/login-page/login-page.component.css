@@ -1,12 +1,15 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 50%;
-}  
 .example-full-width {
-    width: 500px;
+    width: 30%;
+    /* align-self: center; */
 }
 
-.example-button-row {
-    display: table-cell;
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+.error-message {
+    color: #cc0000;
+    font-size: 16px;
+}

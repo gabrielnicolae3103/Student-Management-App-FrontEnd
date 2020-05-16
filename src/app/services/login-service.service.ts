@@ -63,5 +63,6 @@ export class LoginServiceService {
 
   logout(): void {
     localStorage.removeItem('localJWT');
+    this.jwt = undefined;
   }
 }
