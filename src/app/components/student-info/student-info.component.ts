@@ -25,7 +25,9 @@ export class StudentInfoComponent implements OnInit {
                                 'Prenume',
                                 'CNP',
                                 'Nr. Telefon',
-                                'email'];
+                                'email',
+                                'login',
+                                'password'];
   
 
   dataSource: StudentForm[];

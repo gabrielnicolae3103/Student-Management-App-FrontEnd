@@ -38,5 +38,9 @@ export class AddGroupsService {
     return this.http.post(this.hostname + this.endpointGroups, JSON.stringify(grupa), this.httpOptions) as Observable<Grupa>;
   }
 
+  getGroups(): Observable<Grupa[]> {
+    return this.http.get(this.hostname + this.endpointGroups, this.httpOptions) as Observable<Grupa[]>;
+  }
+
 
 }

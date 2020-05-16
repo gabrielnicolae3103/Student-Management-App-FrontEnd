@@ -1,0 +1,35 @@
+<button class="button2" (click)="updateGrades()" mat-flat-button color="primary">Update Grades</button>
+
+<table *ngIf="checkDataSource()" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef> Index </th>
+    <td mat-cell *matCellDef="let element; let i = index;">{{i}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.student.user.firstName}} {{element.student.father_initial}}. {{element.student.user.lastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="grupa">
+    <th mat-header-cell *matHeaderCellDef> Grupa </th>
+    <td mat-cell *matCellDef="let element"> {{element.student.grupa.number}}{{element.student.grupa.seria.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nota">
+    <th mat-header-cell *matHeaderCellDef> Nota </th>
+    <td mat-cell *matCellDef="let element"> {{userGradeMap.get(element.student.user.id) == 0 ? '-' : userGradeMap.get(element.student.user.id)}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="notaNoua">
+    <th mat-header-cell *matHeaderCellDef> Nota Noua </th>
+    <td mat-cell *matCellDef="let element">
+      <input class="input" matInput type="number" max="10" min="1" mat-cell [(ngModel)]="element.grade" name="notaNoua">
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
