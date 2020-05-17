@@ -12,6 +12,7 @@ import {InfoContainerComponent} from './components/info-container/info-container
 import {AddFacultyComponent} from './components/add-faculty/add-faculty.component'
 import {AddSeriesComponent} from './components/add-series/add-series.component'
 import {AddGroupComponent} from './components/add-group/add-group.component'
+import { StudentCoursesComponent } from './components/student-courses/student-courses.component';
 
 
 const routes: Routes = [  {path: 'login', component: LoginPageComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [  {path: 'login', component: LoginPageComponent},
                           {path: 'addSeries', component: AddSeriesComponent, canActivate: [AuthGuard]},
                           {path: 'student-info', component: StudentFormComponent, canActivate: [AuthGuard]},
                           {path: 'secretar', component: SecretaryComponent, canActivate: [AuthGuard]},
-                          {path: 'edit-grades', component: EditGradesComponent, canActivate: [AuthGuard]},
+                          {path: 'edit-grades', component: EditGradesComponent, canActivate: [AuthGuard],
+                          {path: 'view-student-courses', component: StudentCoursesComponent, canActivate: [AuthGuard]},
                           {path: '', component: HomeComponent, canActivate: [AuthGuard]},
                           {path: '**', redirectTo: ''}];
 

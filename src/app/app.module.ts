@@ -30,6 +30,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudentCoursesComponent } from './components/student-courses/student-courses.component';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -47,7 +48,8 @@ import {MatIconModule} from '@angular/material/icon';
     StudentFormComponent,
     SecretaryComponent,
     EditGradesComponent,
-    HomeComponent
+    StudentCoursesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

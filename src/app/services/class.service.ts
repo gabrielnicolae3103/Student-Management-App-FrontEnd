@@ -24,4 +24,10 @@ export class ClassService {
     return this.http.get(this.hostname + this.endpoint, this.httpOptions) as Observable<Class[]>;
   }
 
+  getClassesByStudentYearAndMajor(year: number, majorId: number ): Observable<Class[]>{
+
+    return this.http.get(this.hostname + this.endpoint + '/year/' + year + '/major/' + majorId, this.httpOptions) as Observable<Class[]>;
+    
+  }
+
 }
