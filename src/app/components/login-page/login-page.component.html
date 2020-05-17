@@ -1,4 +1,5 @@
-<form class="example-form">
+<div class="login-form">
+    <h1 *ngIf="error" class="error-message">Wrong Credentials</h1>
     <mat-form-field class="example-full-width">
       <mat-label>UserName</mat-label>
       <input matInput [(ngModel)] = "login.username" [ngModelOptions]="{standalone: true}" placeholder="UserName">
@@ -6,11 +7,7 @@
   
     <mat-form-field class="example-full-width">
       <mat-label>Password</mat-label>
-      <textarea matInput [(ngModel)] = "login.password" [ngModelOptions]="{standalone: true}" placeholder="Password"></textarea>
+      <input matInput [(ngModel)] = "login.password" [ngModelOptions]="{standalone: true}" placeholder="Password">
     </mat-form-field>
-  </form>
   <button mat-button color="primary" class = "example-button-row" (click) = "submitUser()">Submit</button>
-
-  <p>{{login.username}}</p>
-  <p>{{login.password}}</p>
-  <p>TEST</p>
+</div>

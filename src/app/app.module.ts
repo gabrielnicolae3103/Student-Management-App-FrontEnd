@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/home/home.component';
 import { EditGradesComponent } from './components/edit-grades/edit-grades.component';
 import { SecretaryComponent } from './components/secretary/secretary.component';
 import { StudentFormComponent } from './components/studentForm/studentForm.component';
@@ -13,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginServiceService} from './services/login-service.service';
 import { OptionsComponent } from './components/options/options.component';
 import { StudentInfoComponent } from './components/student-info/student-info.component';
@@ -30,6 +31,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentCoursesComponent } from './components/student-courses/student-courses.component';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,8 @@ import { StudentCoursesComponent } from './components/student-courses/student-co
     StudentFormComponent,
     SecretaryComponent,
     EditGradesComponent,
-    StudentCoursesComponent
+    StudentCoursesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,9 +67,12 @@ import { StudentCoursesComponent } from './components/student-courses/student-co
     MatCheckboxModule,
     MatListModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule
   ],
-  providers: [LoginServiceService, AddNewFacultyService],
+  providers: [LoginServiceService, AddNewFacultyService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
