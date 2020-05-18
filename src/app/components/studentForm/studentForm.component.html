@@ -1,47 +1,42 @@
-<div class="example-container" *ngIf="currentStudent">
-  <mat-form-field appearance="fill">
+<div class="example-container" *ngIf="currentUser">
+  <mat-form-field appearance="fill" *ngIf="student">
     <mat-label>Father Initial</mat-label>
-    <input matInput [(ngModel)]="currentStudent.father_initial" name="father_initial">
+    <input matInput [(ngModel)]="currentUser.father_initial" name="father_initial">
   </mat-form-field>
   <br>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" *ngIf="student">
     <mat-label>Student Identification Number</mat-label>
-    <input matInput [(ngModel)]="currentStudent.sin" name="sin">
+    <input matInput [(ngModel)]="currentUser.sin" name="sin">
   </mat-form-field>
   <br>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" *ngIf="student">
     <mat-label>CNP</mat-label>
-    <input matInput [(ngModel)]="currentStudent.cnp" name="cnp">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Parola</mat-label>
-    <input matInput [(ngModel)]="currentStudent.user.password" name="password">
+    <input matInput [(ngModel)]="currentUser.cnp" name="cnp">
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="currentStudent.user.firstName" name="firstName">
+    <input matInput [(ngModel)]="currentUser.user.firstName" name="firstName">
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput [(ngModel)]="currentStudent.user.lastName" name="lastName">
+    <input matInput [(ngModel)]="currentUser.user.lastName" name="lastName">
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="currentStudent.user.email" name="email">
+    <input matInput [(ngModel)]="currentUser.user.email" name="email">
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill">
     <mat-label>Phone Number</mat-label>
-    <input matInput [(ngModel)]="currentStudent.user.phoneNumber" name="phoneNumber">
+    <input matInput [(ngModel)]="currentUser.user.phoneNumber" name="phoneNumber">
   </mat-form-field>
  <br>
  <section>
   <div class="example-button-row">
-    <button mat-raised-button color="primary" (click)="updateStudent()">Edit</button>
+    <button mat-raised-button color="primary" (click)="update()">Edit</button>
   </div>
 </section>
 

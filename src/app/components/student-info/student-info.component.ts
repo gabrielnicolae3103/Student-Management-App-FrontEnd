@@ -15,9 +15,7 @@ export class StudentInfoComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-
-  }
+  dataSource: any;
 
   displayedColumns: string[] = ['SIN',
                                 'Nume',
@@ -28,23 +26,23 @@ export class StudentInfoComponent implements OnInit {
                                 'email',
                                 'login',
                                 'password'];
-  
 
-  dataSource: StudentForm[];
+  ngOnInit(): void {
 
+  }
 
-   getStudentsFromServer() : void {
+   getStudentsFromServer(): void {
      this.studentInfoService.getStudent()
        .subscribe(response => {
          this.dataSource = response;
-         console.log('studentDetails', this.dataSource)
-       })
+         console.log('studentDetails', this.dataSource);
+       });
    }
 
 
-   
 
-   
+
+
 
 
 
