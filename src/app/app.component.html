@@ -15,7 +15,7 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="datePersonale()">Date Personale</button>
     <button mat-menu-item (click)="changePassword()">Schimba Parola</button>
-    <button mat-menu-item (click)="studentGrades()">Situatie Scolara</button>
+    <button mat-menu-item *ngIf="checkStudent" (click)="studentGrades()">Situatie Scolara</button>
     <button (click)="logout()" mat-menu-item>Logout</button>
   </mat-menu>
 </mat-toolbar>

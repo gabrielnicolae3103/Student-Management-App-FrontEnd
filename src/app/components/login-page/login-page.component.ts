@@ -1,3 +1,4 @@
+import { AppComponent } from './../../app.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginCrd } from 'src/app/models/loginCredentials';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,7 +16,8 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private loginService: LoginServiceService,
-    private router: Router
+    private router: Router,
+    private app: AppComponent
   ) { }
 
   login: LoginCrd = {} as any;
@@ -32,6 +34,7 @@ export class LoginPageComponent implements OnInit {
       localStorage.setItem('localJWT', JSON.stringify(jwt)),
       this.loginService.jwt = JSON.stringify(jwt);
       console.log(JSON.parse(localStorage.getItem('localJWT')));
+      this.app.ngOnInit(); // reinitialize
       this.router.navigateByUrl('/');
       },
       (error) => {

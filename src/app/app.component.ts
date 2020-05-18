@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   currentUser: UserForm;
+  checkStudent = false;
 
   constructor(
       private router: Router,
@@ -17,7 +18,11 @@ export class AppComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.authenticationService.getCurrentUser().then(x => this.currentUser = x);
+    this.authenticationService.getCurrentUser()
+    .then(x => {
+      this.currentUser = x;
+      this.checkStudentF();
+    });
   }
 
   logout() {
@@ -43,5 +48,9 @@ export class AppComponent implements OnInit {
 
   studentGrades() {
     this.router.navigateByUrl('/view-grades');
+  }
+
+  checkStudentF() {
+    this.checkStudent = this.currentUser.userType.type === 'STUDENT';
   }
 }
