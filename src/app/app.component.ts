@@ -53,4 +53,8 @@ export class AppComponent implements OnInit {
   checkStudentF() {
     this.checkStudent = this.currentUser.userType.type === 'STUDENT';
   }
+
+  getCurrentUser() {
+    return this.currentUser;
+  }
 }

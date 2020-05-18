@@ -1,3 +1,4 @@
+import { LoginServiceService } from './../../services/login-service.service';
 import { SecretaryService } from './../../services/secretary.service';
 import { UserForm } from './../../models/userForm';
 import { AppComponent } from './../../app.component';
@@ -22,17 +23,18 @@ export class StudentFormComponent implements OnInit {
     private studentService: StudentService,
     private userService: UserService,
     private secretaryService: SecretaryService,
-    private app: AppComponent) { }
+    private loginService: LoginServiceService) { }
 
   ngOnInit() {
-    const user = this.app.currentUser;
-    if (user.userType.type === 'STUDENT') {
-      this.getStudent(user);
-      this.student = true;
-    } else if (user.userType.type === 'SECRETARY') {
-      this.student = false;
-      this.getSecretary(user);
-    }
+    this.loginService.getCurrentUser().then((user: UserForm) => {
+      if (user.userType.type === 'STUDENT') {
+        this.getStudent(user);
+        this.student = true;
+      } else if (user.userType.type === 'SECRETARY') {
+        this.student = false;
+        this.getSecretary(user);
+      }
+    });
   }
 
   getStudent(user: UserForm) {
@@ -58,7 +60,7 @@ export class StudentFormComponent implements OnInit {
   }
 
   update() {
-    if (this.app.currentUser.userType.type === 'STUDENT') {
+    if (this.currentUser.userType.type === 'STUDENT') {
       this.updateStudent();
     } else {
       this.updateSecretar();
