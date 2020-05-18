@@ -32,4 +32,16 @@ export class AppComponent implements OnInit {
   showNavBar() {
     return this.authenticationService.jwt;
   }
+
+  datePersonale() {
+    this.router.navigateByUrl('/personal-info');
+  }
+
+  changePassword() {
+    this.router.navigateByUrl('/change-password');
+  }
+
+  studentGrades() {
+    this.router.navigateByUrl('/view-student-courses');
+  }
 }

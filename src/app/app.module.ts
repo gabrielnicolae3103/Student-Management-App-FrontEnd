@@ -1,3 +1,4 @@
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditGradesComponent } from './components/edit-grades/edit-grades.component';
 import { SecretaryComponent } from './components/secretary/secretary.component';
@@ -34,6 +35,8 @@ import { StudentCoursesComponent } from './components/student-courses/student-co
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import {MatIconModule} from '@angular/material/icon';
     EditGradesComponent,
     StudentCoursesComponent,
     HomeComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatMenuModule,
   ],
   providers: [LoginServiceService, AddNewFacultyService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, ],

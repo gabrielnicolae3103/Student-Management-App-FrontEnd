@@ -8,10 +8,16 @@
 
   <!-- This fills the remaining space of the current row -->
   <span class="logout-button"></span>
-  <button (click)="logout()" mat-icon-button color="white" aria-label="some">
+  <button mat-button [matMenuTriggerFor]="menu" mat-icon-button color="white" aria-label="some">
     <mat-icon>person</mat-icon>
-    Logout
+    Profile
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="datePersonale()">Date Personale</button>
+    <button mat-menu-item (click)="changePassword()">Schimba Parola</button>
+    <button mat-menu-item (click)="studentGrades()">Situatie Scolara</button>
+    <button (click)="logout()" mat-menu-item>Logout</button>
+  </mat-menu>
 </mat-toolbar>
 </div>
 <!-- main app container -->

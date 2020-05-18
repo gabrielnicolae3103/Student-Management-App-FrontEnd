@@ -16,7 +16,7 @@ export class StudentCoursesComponent implements OnInit {
 
   username: string;
   currentStudent: StudentForm;
-  classes: Class[]= new Array<Class>();
+  classes: Class[] = new Array<Class>();
   grades = new Map();
   index: number;
   classesMap = new Map();
@@ -38,46 +38,46 @@ export class StudentCoursesComponent implements OnInit {
       console.log(this.currentStudent);
     });
 
-    this.classService.getClasses().subscribe((allClasses: Class[])=> {
+    this.classService.getClasses().subscribe((allClasses: Class[]) => {
       this.classes = allClasses;
     });
 
 
-      let year = [1, 2, 3, 4];
+    const year = [1, 2, 3, 4];
 
-      this.classService.getClassesByStudentYearAndMajor(year[0], 1)
+    this.classService.getClassesByStudentYearAndMajor(year[0], 1)
       .subscribe((classes1: Class[]) => {
         this.classesMap.set('1', classes1);
         console.log(this.classesMap);
-      })
+      });
 
-      this.classService.getClassesByStudentYearAndMajor(year[1], 1)
+    this.classService.getClassesByStudentYearAndMajor(year[1], 1)
       .subscribe((classes1: Class[]) => {
         this.classesMap.set('2', classes1);
-      })
-      this.classService.getClassesByStudentYearAndMajor(year[2], 1)
+      });
+    this.classService.getClassesByStudentYearAndMajor(year[2], 1)
       .subscribe((classes1: Class[]) => {
         this.classesMap.set('3', classes1);
-      })
-      this.classService.getClassesByStudentYearAndMajor(year[3], 1)
+      });
+    this.classService.getClassesByStudentYearAndMajor(year[3], 1)
       .subscribe((classes1: Class[]) => {
         this.classesMap.set('4', classes1);
-      })
+      });
   }
 
 
   getGrades(): void {
 
-    for (let value of this.classesMap.values()) {
-      //console.log(value);
+    for (const value of this.classesMap.values()) {
+      // console.log(value);
 
       let classesVar = new Array<Class>();
       classesVar = value;
-      for(let i = 0; i < classesVar.length; i++){
+      for (let i = 0; i < classesVar.length; i++){
         this.gradeService.getGradeByClassAndStudent(classesVar[i], this.currentStudent)
-        .subscribe((grade: Grade) =>{
+        .subscribe((grade: Grade) => {
           this.grades.set(classesVar[i].name, grade.grade );
-        })
+        });
       }
 
     }

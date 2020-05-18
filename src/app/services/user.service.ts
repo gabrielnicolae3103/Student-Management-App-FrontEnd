@@ -37,4 +37,16 @@ getUserByUsername(username: string): Observable<UserForm> {
   return this.http.get(this.hostname + this.endpoint + '/login/' + username, httpOptions) as Observable<UserForm>;
 }
 
+updateUser(user: UserForm): Observable<UserForm> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('localJWT')).jwt
+    })
+  };
+  return this.http.put(this.hostname + this.endpoint + '/' + user.id,
+                        JSON.stringify(user),
+                        httpOptions) as Observable<UserForm>;
+}
+
 }
