@@ -42,6 +42,6 @@ export class AppComponent implements OnInit {
   }
 
   studentGrades() {
-    this.router.navigateByUrl('/view-student-courses');
+    this.router.navigateByUrl('/view-grades');
   }
 }

@@ -29,8 +29,8 @@ getStudents(): Observable<StudentForm[]>{
   return this.http.get(this.hostname + this.endpoint, this.httpOptions) as Observable<StudentForm[]>;
 }
 
-getStudentByUsername(username: string): Observable<StudentForm> {
-  return this.http.get(this.hostname + this.endpoint + '/username/' + username, this.httpOptions) as Observable<StudentForm>;
+async getStudentByUsername(username: string): Promise<StudentForm> {
+  return this.http.get(this.hostname + this.endpoint + '/username/' + username, this.httpOptions).toPromise() as Promise<StudentForm>;
 }
 
 getStudentById(id: number): Observable<StudentForm> {

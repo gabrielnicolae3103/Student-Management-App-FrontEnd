@@ -1,3 +1,4 @@
+import { GradesComponent } from './components/grades/grades.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { HomeComponent } from './components/home/home.component';
@@ -28,6 +29,7 @@ const routes: Routes = [  {path: 'login', component: LoginPageComponent},
                           {path: 'edit-grades', component: EditGradesComponent, canActivate: [AuthGuard]},
                           {path: 'view-student-courses', component: StudentCoursesComponent, canActivate: [AuthGuard]},
                           {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
+                          {path: 'view-grades', component: GradesComponent, canActivate: [AuthGuard]},
                           {path: '', component: HomeComponent, canActivate: [AuthGuard]},
                           {path: '**', redirectTo: ''}];
 

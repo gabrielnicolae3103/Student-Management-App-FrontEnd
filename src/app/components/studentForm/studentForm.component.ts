@@ -16,7 +16,7 @@ export class StudentFormComponent implements OnInit {
   ngOnInit() {
     this.username = jwt_decode(JSON.parse(localStorage.getItem('localJWT')).jwt).sub;
     console.log(this.username);
-    this.studentService.getStudentByUsername(this.username).subscribe((user: StudentForm) => {
+    this.studentService.getStudentByUsername(this.username).then((user: StudentForm) => {
       this.currentStudent = user;
       console.log(this.currentStudent);
     });

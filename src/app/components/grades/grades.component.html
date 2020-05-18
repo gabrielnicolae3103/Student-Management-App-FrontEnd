@@ -1,0 +1,48 @@
+<table *ngFor="let year of [1,2,3,4]" mat-table [dataSource]="classes.get(year)" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+  
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef> Index </th>
+    <td class="index" mat-cell *matCellDef="let element; let i = index;">{{i}}</td>
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="course">
+    <th mat-header-cell *matHeaderCellDef> Course </th>
+    <td class="course" mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="grade">
+    <th mat-header-cell *matHeaderCellDef> Grade </th>
+    <td class="grade" mat-cell *matCellDef="let element"> {{grades.has(element) ? grades.get(element).grade === 0? '-': grades.get(element).grade: '-'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pc">
+    <th mat-header-cell *matHeaderCellDef> PC </th>
+    <td class="credit-points" mat-cell *matCellDef="let element"> {{element.creditPoints}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td class="type" mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="semester">
+    <th mat-header-cell *matHeaderCellDef> Semester </th>
+    <td class="semester" mat-cell *matCellDef="let element"> {{element.semester}} </td>
+  </ng-container>
+
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="item-description">
+    <th mat-header-cell *matHeaderCellDef> An: {{year}} </th>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-header-row *matHeaderRowDef="['item-description']"
+      class="example-second-header-row">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

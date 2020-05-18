@@ -24,15 +24,10 @@ export class EditGradesComponent implements OnInit {
   }
 
   ngOnInit() {
-    let responses = new Array<Observable<Grade>>();
-    this.students.forEach((student: StudentForm) => {
-      responses.push(this.gradeService.getGradeByClassAndStudent(this.course, student));
-    });
-    forkJoin(responses).subscribe(grades => {
-      for (let i = 0; i < this.students.length; i++) {
-        this.dataSource.push(grades[i]);
-        this.userGradeMap.set(grades[i].student.user.id, grades[i].grade);
-      }
+    this.students.forEach(async (student: StudentForm) => {
+      const grade = await this.gradeService.getGradeByClassAndStudent(this.course, student);
+      this.dataSource.push(grade);
+      this.userGradeMap.set(grade.student.user.id, grade.grade);
     });
   }
 

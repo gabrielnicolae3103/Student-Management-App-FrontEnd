@@ -1,3 +1,4 @@
+import { GradesComponent } from './components/grades/grades.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditGradesComponent } from './components/edit-grades/edit-grades.component';
@@ -54,6 +55,7 @@ import {MatMenuModule} from '@angular/material/menu';
     StudentCoursesComponent,
     HomeComponent,
     ChangePasswordComponent,
+    GradesComponent,
   ],
   imports: [
     BrowserModule,

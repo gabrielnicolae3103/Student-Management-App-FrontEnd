@@ -24,14 +24,14 @@ export class GradeService {
   private hostname = 'http://aws-backend-ipapp.eba-g7bht3us.eu-central-1.elasticbeanstalk.com';
   clasa: Class;
   student: StudentForm;
-  getGradeByClassAndStudent(clasa: Class, student: StudentForm): Observable<Grade>{
+  async getGradeByClassAndStudent(clasa: Class, student: StudentForm): Promise<Grade>{
     this.clasa = clasa;
     this.student = student;
     let error: HttpErrorResponse;
     return this.http
     .get<Grade>(this.hostname + this.endpoint + '/student/'
         + student.sin + '/class/' + clasa.id, this.httpOptions)
-    .pipe(catchError(this.handleError('getGrade', clasa, student)));
+    .pipe(catchError(this.handleError('getGrade', clasa, student))).toPromise() as Promise<Grade>;
   }
 
   updateGrade(grade: Grade): Observable<Grade> {

@@ -1,0 +1,13 @@
+table {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+  }
+.course {
+    width: 50%;
+}
+
+.grade .credit-points .semester .type .class {
+    width: 10%;
+}

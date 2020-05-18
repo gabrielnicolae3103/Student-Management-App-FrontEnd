@@ -33,7 +33,7 @@ export class StudentCoursesComponent implements OnInit {
     console.log(this.username);
     this.showGrades = false;
 
-    this.studentService.getStudentByUsername(this.username).subscribe((user: StudentForm) => {
+    this.studentService.getStudentByUsername(this.username).then((user: StudentForm) => {
       this.currentStudent = user;
       console.log(this.currentStudent);
     });
@@ -46,21 +46,21 @@ export class StudentCoursesComponent implements OnInit {
     const year = [1, 2, 3, 4];
 
     this.classService.getClassesByStudentYearAndMajor(year[0], 1)
-      .subscribe((classes1: Class[]) => {
+      .then((classes1: Class[]) => {
         this.classesMap.set('1', classes1);
         console.log(this.classesMap);
       });
 
     this.classService.getClassesByStudentYearAndMajor(year[1], 1)
-      .subscribe((classes1: Class[]) => {
+      .then((classes1: Class[]) => {
         this.classesMap.set('2', classes1);
       });
     this.classService.getClassesByStudentYearAndMajor(year[2], 1)
-      .subscribe((classes1: Class[]) => {
+      .then((classes1: Class[]) => {
         this.classesMap.set('3', classes1);
       });
     this.classService.getClassesByStudentYearAndMajor(year[3], 1)
-      .subscribe((classes1: Class[]) => {
+      .then((classes1: Class[]) => {
         this.classesMap.set('4', classes1);
       });
   }
@@ -75,7 +75,7 @@ export class StudentCoursesComponent implements OnInit {
       classesVar = value;
       for (let i = 0; i < classesVar.length; i++){
         this.gradeService.getGradeByClassAndStudent(classesVar[i], this.currentStudent)
-        .subscribe((grade: Grade) => {
+        .then((grade: Grade) => {
           this.grades.set(classesVar[i].name, grade.grade );
         });
       }
