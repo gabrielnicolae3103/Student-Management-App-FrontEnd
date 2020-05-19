@@ -1,44 +1,47 @@
 <div class="example-container" *ngIf="currentUser">
-  <mat-form-field appearance="fill" *ngIf="student">
-    <mat-label>Father Initial</mat-label>
-    <input matInput [(ngModel)]="currentUser.father_initial" name="father_initial">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill" *ngIf="student">
-    <mat-label>Student Identification Number</mat-label>
-    <input matInput [(ngModel)]="currentUser.sin" name="sin">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill" *ngIf="student">
-    <mat-label>CNP</mat-label>
-    <input matInput [(ngModel)]="currentUser.cnp" name="cnp">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="currentUser.user.firstName" name="firstName">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Last Name</mat-label>
-    <input matInput [(ngModel)]="currentUser.user.lastName" name="lastName">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="currentUser.user.email" name="email">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Phone Number</mat-label>
-    <input matInput [(ngModel)]="currentUser.user.phoneNumber" name="phoneNumber">
-  </mat-form-field>
- <br>
- <section>
-  <div class="example-button-row">
-    <button mat-raised-button color="primary" (click)="update()">Edit</button>
+  <div class="parent">
+    <H1 class="header">Informatii Personale</H1>
   </div>
-</section>
+  <form class="informatii-personale-form">
+    <mat-form-field appearance="fill" *ngIf="student">
+      <mat-label>Father Initial</mat-label>
+      <input matInput [(ngModel)]="currentUser.father_initial" name="father_initial">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" *ngIf="student">
+      <mat-label>Student Identification Number</mat-label>
+      <input matInput [(ngModel)]="currentUser.sin" name="sin">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" *ngIf="student">
+      <mat-label>CNP</mat-label>
+      <input matInput [(ngModel)]="currentUser.cnp" name="cnp">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.firstName" name="firstName">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.lastName" name="lastName">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.email" name="email">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.phoneNumber" name="phoneNumber">
+    </mat-form-field>
+   <br>
+  </form>
+    <div class="parent">
+      <button class="example-button-row" mat-raised-button color="primary" (click)="update()">Edit</button>
+    </div>
 
 </div>
 

@@ -40,12 +40,14 @@ export class StudentFormComponent implements OnInit {
   getStudent(user: UserForm) {
     this.studentService.getStudentByUsername(user.login).then((student: StudentForm) => {
       this.currentUser = student;
+      console.log(this.currentUser);
     });
   }
 
   getSecretary(user: UserForm) {
     this.secretaryService.getSecretaryByUsername(user.login).then((secretary: Secretary) => {
       this.currentUser = secretary;
+      console.log(this.currentUser);
     });
   }
 
@@ -60,7 +62,7 @@ export class StudentFormComponent implements OnInit {
   }
 
   update() {
-    if (this.currentUser.userType.type === 'STUDENT') {
+    if (this.currentUser.user.userType.type === 'STUDENT') {
       this.updateStudent();
     } else {
       this.updateSecretar();
