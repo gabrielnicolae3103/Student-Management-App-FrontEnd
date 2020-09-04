@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   currentUser: UserForm;
   checkStudent = false;
-
+  checkSecretary = false;
   constructor(
       private router: Router,
       private authenticationService: LoginServiceService
@@ -52,9 +52,14 @@ export class AppComponent implements OnInit {
 
   checkStudentF() {
     this.checkStudent = this.currentUser.userType.type === 'STUDENT';
+    this.checkSecretary = !this.checkStudent;
   }
 
   getCurrentUser() {
     return this.currentUser;
+  }
+
+  changeGrades() {
+    this.router.navigateByUrl('/secretar');
   }
 }

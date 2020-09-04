@@ -9,13 +9,13 @@
   <!-- This fills the remaining space of the current row -->
   <span class="logout-button"></span>
   <button mat-button [matMenuTriggerFor]="menu" mat-icon-button color="white" aria-label="some">
-    <mat-icon>person</mat-icon>
-    Profile
+    <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="datePersonale()">Date Personale</button>
     <button mat-menu-item (click)="changePassword()">Schimba Parola</button>
     <button mat-menu-item *ngIf="checkStudent" (click)="studentGrades()">Situatie Scolara</button>
+    <button mat-menu-item *ngIf="checkSecretary" (click)="changeGrades()">Edit Grades</button>
     <button (click)="logout()" mat-menu-item>Logout</button>
   </mat-menu>
 </mat-toolbar>

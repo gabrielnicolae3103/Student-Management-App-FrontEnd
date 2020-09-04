@@ -3,9 +3,9 @@
     <H1 class="header">Informatii Personale</H1>
   </div>
   <form class="informatii-personale-form">
-    <mat-form-field appearance="fill" *ngIf="student">
-      <mat-label>Father Initial</mat-label>
-      <input matInput [(ngModel)]="currentUser.father_initial" name="father_initial">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.firstName" name="firstName">
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill" *ngIf="student">
@@ -18,15 +18,16 @@
       <input matInput [(ngModel)]="currentUser.cnp" name="cnp">
     </mat-form-field>
     <br>
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="currentUser.user.firstName" name="firstName">
+    <mat-form-field appearance="fill" *ngIf="student">
+      <mat-label>Father Initial</mat-label>
+      <input matInput [(ngModel)]="currentUser.father_initial" name="father_initial">
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput [(ngModel)]="currentUser.user.lastName" name="lastName">
+      <mat-label>Phone Number</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.phoneNumber" name="phoneNumber">
     </mat-form-field>
+    
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
@@ -34,8 +35,8 @@
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>Phone Number</mat-label>
-      <input matInput [(ngModel)]="currentUser.user.phoneNumber" name="phoneNumber">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="currentUser.user.lastName" name="lastName">
     </mat-form-field>
    <br>
   </form>
@@ -43,11 +44,5 @@
       <button class="example-button-row" mat-raised-button color="primary" (click)="update()">Edit</button>
     </div>
 
-</div>
-
-<div>
-  <nav>
-    <li><a routerLink="/view-student-courses" routerLinkActive="active"> Vezi situatie scolara </a></li>
-  </nav>
 </div>
 <router-outlet></router-outlet>
